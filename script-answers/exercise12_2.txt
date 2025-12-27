@@ -1,0 +1,14 @@
+Script started on Sat Dec 27 19:54:45 2025
+Restored session: Sam 27 déc 2025 19:54:37 CET
+[1m[7m%[27m[1m[0m                                                                                ]7;file://MacBook-Air-de-Thibaut.local/Users/thibaut/Documents/GitHub/part12-containers-applications[0m[27m[24m[Jthibaut@MacBook-Air-de-Thibaut part12-containers-applications % [K[?2004h[7mdocker container[7m [7mrun -it ubuntu bash[27m[K[A[44C[27md[27mo[27mc[27mk[27me[27mr[27m [27mc[27mo[27mn[27mt[27ma[27mi[27mn[27me[27mr [27mr[27mu[27mn[27m [27m-[27mi[27mt[27m [27mu[27mb[27mu[27mn[27mt[27mu[27m [27mb[27ma[27ms[27mh[?2004l
+[?2004h]0;root@01ca67ebf74e: /root@01ca67ebf74e:/# [7mmkdir -p /usr/src/app[27mmkdir -p /usr/src/appc/app
+[?2004l[?2004h]0;root@01ca67ebf74e: /root@01ca67ebf74e:/# touch /usr/src/app/indexjs  .js
+[?2004l[?2004h]0;root@01ca67ebf74e: /root@01ca67ebf74e:/# [Kexit
+[?2004lexit
+[1m[7m%[27m[1m[0m                                                                                ]7;file://MacBook-Air-de-Thibaut.local/Users/thibaut/Documents/GitHub/part12-containers-applications[0m[27m[24m[Jthibaut@MacBook-Air-de-Thibaut part12-containers-applications % [K[?2004heexit[?2004l
+
+Saving session...
+...saving history...truncating history files...
+...completed.
+
+Script done on Sat Dec 27 19:55:53 2025
