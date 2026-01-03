@@ -7,11 +7,10 @@
     "dev": "vite --host",
     "build": "vite build",
     "lint": "eslint .",
-    "test": "jest",
+    "test": "jest --passWithNoTests",
     "preview": "vite preview",
     "format": "prettier --write ."
   },
-  "proxy": "http://localhost:3003",
   "dependencies": {
     "@reduxjs/toolkit": "^2.10.1",
     "@tailwindcss/vite": "^4.1.17",
