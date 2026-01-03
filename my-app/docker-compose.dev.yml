@@ -1,0 +1,31 @@
+services:
+  frontend:
+    image: front-dev
+    build:
+      context: ./frontend
+      dockerfile: dev.Dockerfile
+    volumes:
+      - ./frontend:/usr/src/app
+    container_name: front-dev
+  backend:
+    image: back-dev
+    build:
+      context: ./backend
+      dockerfile: dev.Dockerfile
+    volumes:
+      - ./backend:/usr/src/app
+    container_name: back-dev
+    environment:
+      - MONGODB_URI=${MONGODB_URI}
+      - PORT=3003
+      - SECRET=${SECRET}
+  nginx:
+    image: nginx:1.20.1
+    volumes:
+      - ./nginx.dev.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - 8080:80
+    container_name: reverse-proxy
+    depends_on:
+      - frontend
+      - backend
