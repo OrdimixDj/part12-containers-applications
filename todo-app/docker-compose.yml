@@ -1,0 +1,48 @@
+services:
+  mongo:
+    image: mongo:latest
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+      MONGO_INITDB_DATABASE: the_database
+    volumes: 
+      - ./todo-backend/mongo/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
+      - mongo_data:/data/db
+  redis:
+    image: redis:alpine
+    command: ['redis-server', '--appendonly', 'yes']
+    volumes:
+    - redis_data:/data
+  todo-frontend:
+    image: todo-front-prod
+    build:
+      context: ./todo-frontend
+      dockerfile: Dockerfile
+    container_name: todo-front-prod
+    environment: 
+      - VITE_BACKEND_URL=/api/
+  todo-backend:
+    image: todo-back-prod
+    build:
+      context: ./todo-backend
+      dockerfile: Dockerfile
+    container_name: todo-back-prod
+    environment: 
+      - REDIS_URL=redis://redis:6379
+      - MONGO_URL=mongodb://root:example@mongo:27017/the_database?authSource=admin
+    depends_on:
+      - mongo
+      - redis
+  nginx:
+    image: nginx:stable-alpine
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - 80:80
+    container_name: reverse-proxy
+    depends_on:
+      - todo-frontend
+      - todo-backend
+volumes:
+  mongo_data:
+  redis_data:

@@ -1,4 +1,3 @@
-# The first FROM is now a stage called build-stage
 FROM node:20 AS base-stage 
 WORKDIR /usr/src/app
 COPY . .
@@ -8,7 +7,7 @@ FROM base-stage AS test-stage
 RUN npm test
 
 FROM test-stage AS build-stage
-ENV VITE_BACKEND_URL=http://localhost:3000
+ENV VITE_BACKEND_URL=/api/
 RUN npm run build
 
 FROM nginx:1.25-alpine
